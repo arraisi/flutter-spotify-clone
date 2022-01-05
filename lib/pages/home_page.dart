@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_font_icons/flutter_font_icons.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:spotify_clone/json/songs_json.dart';
+import 'package:spotify_clone/pages/album_page.dart';
 import 'package:spotify_clone/theme/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,6 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int activeMeny1 = 0;
   int activeMeny2 = 2;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,7 +103,16 @@ class _HomePageState extends State<HomePage> {
                       return Padding(
                         padding: const EdgeInsets.only(right: 30),
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    alignment: Alignment.bottomCenter,
+                                    child: AlbumPage(
+                                      song: songs[index],
+                                    ),
+                                    type: PageTransitionType.scale));
+                          },
                           child: Column(
                             children: [
                               Container(
@@ -193,7 +205,16 @@ class _HomePageState extends State<HomePage> {
                       return Padding(
                         padding: const EdgeInsets.only(right: 30),
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    alignment: Alignment.bottomCenter,
+                                    child: AlbumPage(
+                                      song: songs[index + 5],
+                                    ),
+                                    type: PageTransitionType.scale));
+                          },
                           child: Column(
                             children: [
                               Container(
